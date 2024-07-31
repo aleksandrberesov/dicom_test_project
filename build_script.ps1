@@ -1,0 +1,1 @@
+g++ main.cpp ./src/ClassA.cpp ./src/ClassB.cpp ./src/ClassC.cpp -o ./bin/main.exe
