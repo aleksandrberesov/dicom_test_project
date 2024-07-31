@@ -12,7 +12,7 @@ ClassA::~ClassA(){
 };
 
 void ClassA::setData(double x, double y, double z){
-     mtx.lock();
+    mtx.lock();
     point_x = x;
     point_y = y;
     point_z = z;  

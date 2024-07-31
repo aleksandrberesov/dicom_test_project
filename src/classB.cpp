@@ -2,12 +2,14 @@
 #include <format>
 #include "ClassA.h"
 #include "ClassB.h"
+#include "Logger.cpp"
 
-ClassB::ClassB(int ID, int N, int L1, int L2, ClassA& obj) : vector_ref(obj), 
-                                                     freq(N), 
-                                                     range_min(L1), 
-                                                     range_max(L2),
-                                                     id(ID)
+ClassB::ClassB(int ID, int N, int L1, int L2, ClassA& OBJ, Logger& LOG) :   vector_ref(OBJ), 
+                                                                            logger_ref(LOG),
+                                                                            freq(N), 
+                                                                            range_min(L1), 
+                                                                            range_max(L2),
+                                                                            id(ID)
 {
     last_checked_value = -1;
     if (range_min > range_max){
@@ -15,7 +17,7 @@ ClassB::ClassB(int ID, int N, int L1, int L2, ClassA& obj) : vector_ref(obj),
         range_min = range_max;
         range_max = i;
     }
-    std::cout << GetInfo() << std::endl; 
+    logger_ref.Log(GetInfo());
     timer.start(std::chrono::milliseconds(1000/freq), [this](){this->Check();}); 
 };
 
@@ -37,9 +39,11 @@ std::string ClassB::GetData(){
 
 void ClassB::Check()
 {
-    if (last_checked_value != vector_ref.getLength()) {
-        last_checked_value = vector_ref.getLength();
-        //std::cout << GetData() << " ,last: " << last_checked_value << std::endl;
-        //std::cout << "X: " << vector_ref.getX() << ", Y: " << vector_ref.getY() << ", Z: " << vector_ref.getZ() << ", Length: " << vector_ref.getLength() << std::endl;
-    }
+    double v = vector_ref.getLength();
+    if ((v>=range_min) && (v<=range_max)){
+        if (last_checked_value != v) {
+            last_checked_value = v;
+            logger_ref.Log(GetData());
+        };        
+    };
 };
