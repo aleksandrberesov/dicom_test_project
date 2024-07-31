@@ -8,17 +8,11 @@
 #include "src\Logger.cpp"
 
 int GetRandomNumber(int min_, int max_){
-    //std::srand(static_cast<unsigned>(std::time(nullptr)));
-    //int i = std::rand();    
     return min_ + (std::rand() % (max_ - min_ + 1));
 };
 
 int main() {
     std::srand(static_cast<unsigned>(std::time(nullptr)));    
-    std::cout<<std::rand()<<std::endl;
-    std::cout<<std::rand()<<std::endl;
-    std::cout<<std::rand()<<std::endl;
-
 
     Logger myLogger;
     ClassA myVector(0,0,0);
