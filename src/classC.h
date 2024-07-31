@@ -11,7 +11,7 @@ private:
     int freq;
 private:
     void Change();
-///    char* GetInfo(); 
+    char* GetInfo(); 
 public:
     ClassC(int ID, int M, ClassA& obj);
     ~ClassC();

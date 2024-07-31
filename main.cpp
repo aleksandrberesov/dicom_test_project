@@ -5,10 +5,13 @@
 #include "src\ClassA.h"
 #include "src\ClassB.h"
 #include "src\ClassC.h"
-#include "src\Lib.cpp"
 #include "src\Logger.cpp"
 
 #include "src\ThreadTimer.cpp"
+
+int GetRandomNumber(int min_, int max_){
+    return min_ + (std::rand() % (max_ - min_ + 1));
+};
 
 int main() {
 
@@ -21,6 +24,7 @@ int main() {
                     GetRandomNumber(1, 200),
                     myVector);
     }
+
     for (int i = 1; i <= 2; ++i) {
         new ClassC( i,
                     GetRandomNumber(10, 100),

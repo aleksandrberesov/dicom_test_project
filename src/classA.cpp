@@ -1,5 +1,6 @@
 #include <cmath>
-
+#include <thread>
+#include <mutex>
 #include "ClassA.h"
 
 ClassA::ClassA(double x, double y, double z){
@@ -11,11 +12,12 @@ ClassA::~ClassA(){
 };
 
 void ClassA::setData(double x, double y, double z){
-
+     mtx.lock();
     point_x = x;
     point_y = y;
     point_z = z;  
-    calcvectorLength();    
+    calcvectorLength();   
+    mtx.unlock();
 };
 
 void ClassA::calcvectorLength(){

@@ -1,5 +1,3 @@
-//#include <thread> 
-//#include <chrono>
 #include "ClassA.h"
 #include "ThreadTimer.cpp"
 
@@ -16,6 +14,8 @@ private:
     double last_checked_value;
 private:
     void Check();
+    std::string GetInfo(); 
+    std::string GetData();
 public:
     ClassB(int ID, int N, int L1, int L2, ClassA& obj);
     ~ClassB();

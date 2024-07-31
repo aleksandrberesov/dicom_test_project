@@ -1,3 +1,6 @@
+#include <thread>
+#include <mutex>
+
 #pragma once
 
 class ClassA{
@@ -6,6 +9,7 @@ private:
     double point_y;
     double point_z;   
     double vector_length; 
+    std::mutex mtx;
 protected:
     void calcvectorLength();
 public:
