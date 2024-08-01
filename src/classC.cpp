@@ -20,6 +20,7 @@ ClassC::ClassC(int ID, int  M, ClassA& OBJ, Logger& LOG) :  vector_ref(OBJ),
 ClassC::~ClassC()
 {
     timer.stop();
+    logger_ref.Log("changer stoped.");    
 };
 
 std::string ClassC::GetInfo(){

@@ -24,6 +24,7 @@ ClassB::ClassB(int ID, int N, int L1, int L2, ClassA& OBJ, Logger& LOG) :   vect
 ClassB::~ClassB()
 {
     timer.stop();
+    logger_ref.Log("watcher stoped.");
 };
 
 std::string ClassB::GetInfo(){
